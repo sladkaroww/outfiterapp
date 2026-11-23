@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:push": "node scripts/db-push.mjs",
-    "pages:build": "next build && SKIP_WRANGLER_CONFIG_CHECK=yes node node_modules/@opennextjs/cloudflare/dist/cli/index.js build",
+    "pages:build": "opennextjs-cloudflare build",
     "preview": "npx wrangler pages dev .open-next",
     "deploy:cf": "npx wrangler pages deploy .open-next --project-name outfiterapp"
   },
