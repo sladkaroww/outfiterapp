@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body suppressHydrationWarning>
         <a className="skip-link" href="#main-content">Skip to content</a>
-        {/* <ClerkProvider> */}
+        <ClerkProvider>
           <Providers>
             <AppStateProvider>
               {children}
@@ -76,7 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Analytics />
             </AppStateProvider>
           </Providers>
-        {/* </ClerkProvider> */}
+        </ClerkProvider>
         <script dangerouslySetInnerHTML={{ __html: HOIST_EMOTION_STYLES }} />
       </body>
     </html>

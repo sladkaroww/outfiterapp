@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@clerk/nextjs";
 import {
   createContext,
   useCallback,
@@ -133,17 +134,14 @@ async function fetchJson<T>(url: string): Promise<T> {
 const AppStateContext = createContext<AppState | null>(null);
 
 export function AppStateProvider({ children }: { children: React.ReactNode }) {
-  // Clerk is disabled for Cloudflare Pages debugging; use anonymous identity
-  const userId = null;
+  const { userId } = useAuth();
   // Remounting on identity change resets every piece of cached data, so one
   // account can never see another account's wardrobe or feed.
   return <AppStateStore key={userId ?? "anonymous"}>{children}</AppStateStore>;
 }
 
 function AppStateStore({ children }: { children: React.ReactNode }) {
-  // Clerk is disabled for Cloudflare Pages debugging; assume loaded and signed in as anonymous
-  const isLoaded = true;
-  const isSignedIn = false;
+  const { isLoaded, isSignedIn } = useAuth();
   const [items, setItems] = useState<ClothingItem[]>([]);
   const [posts, setPosts] = useState<OutfitPost[]>([]);
   const [status, setStatus] = useState<FeedStatus>("loading");
