@@ -1,5 +1,5 @@
 {
-  "name": "next-app",
+  "name": "outfiterapp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,10 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:push": "node scripts/db-push.mjs",
-    "pages:build": "next build && SKIP_WRANGLER_CONFIG_CHECK=yes node node_modules/@opennextjs/cloudflare/dist/cli/index.js build",
-    "preview": "npx wrangler pages dev .open-next",
-    "deploy:cf": "npx wrangler pages deploy .open-next --project-name outfiterapp"
+    "db:push": "node scripts/db-push.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1169.0",
@@ -26,7 +23,6 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.18",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -34,7 +30,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "wrangler": "^4.166.0"
+    "typescript": "^5"
   }
 }
